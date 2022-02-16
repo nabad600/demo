@@ -46,5 +46,6 @@ echo "Move the file to your PATH."
 sudo mv docker-compose-linux-x86_64 /usr/local/bin/docker-compose
 echo "Docker composer version check"
 docker-compose --version
+sudo touch /etc/sysctl.d/50-unprivileged-ports.conf
 sudo echo 'net.ipv4.ip_unprivileged_port_start=0' > /etc/sysctl.d/50-unprivileged-ports.conf
-sysctl --system
+sudo sysctl --system
