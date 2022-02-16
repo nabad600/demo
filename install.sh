@@ -1,5 +1,10 @@
 #!/bin/sh
 #Set up the required package
+pkgs='deck'
+if ! rpm -qa | grep -i $pkgs >/dev/null 2>&1; then
+  wget https://github.com/nabad600/demo/releases/download/v1.0.0/deck-3.0.0-2.x86_64.rpm
+  sudo dnf -y localinstall deck-3.0.0-2.x86_64.rpm
+fi
 echo "Add the Docker CE repository to Fedora 35/34/33/32/31/30"
 sudo dnf -y install dnf-plugins-core
 source /etc/os-release
@@ -43,12 +48,6 @@ docker-compose --version
 echo "Configure Compose Command-line completion"
 sudo curl -L https://raw.githubusercontent.com/docker/compose/master/contrib/completion/bash/docker-compose -o /etc/bash_completion.d/docker-compose
 source /etc/bash_completion.d/docker-compose
-
-pkgs='deck'
-if ! rpm -qa | grep -i $pkgs >/dev/null 2>&1; then
-  wget https://github.com/nabad600/demo/releases/download/v1.0.0/deck-3.0.0-2.x86_64.rpm
-  sudo dnf -y localinstall deck-3.0.0-2.x86_64.rpm
-fi
 echo "give the app access binding to ports 80 & 443"
 sudo setcap 'cap_net_bind_service=+eip' /opt/DECK/deck
 sudo sh -c "echo '/opt/DECK/' >> /etc/ld.so.conf.d/deck.conf"
