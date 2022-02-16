@@ -28,6 +28,7 @@ sudo usermod -aG docker $(whoami)
 newgrp docker
 echo "The version of Docker installed can be checked"
 docker version
+systemctl start docker
 echo "Install Docker Compose on Fedora 35/34/33/32/31 from the repo"
 sudo dnf -y install docker-compose
 echo "Install Docker Compose on Fedora from a binary file."
