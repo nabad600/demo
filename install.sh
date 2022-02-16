@@ -52,3 +52,5 @@ sudo echo "net.ipv4.ip_unprivileged_port_start=80" >> /etc/sysctl.d/50-unprivile
 sudo echo "net.ipv4.ip_unprivileged_port_start=443" >> /etc/sysctl.d/50-unprivileged-ports.conf
 sudo chown root:root /etc/sysctl.d/50-unprivileged-ports.conf
 sudo sysctl --system
+clear
+echo "All set and done.";
