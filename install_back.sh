@@ -26,3 +26,5 @@ sudo systemctl enable --now docker
 echo "Add your user to this group to run docker commands without sudo"
 sudo usermod -aG docker $(whoami)
 newgrp docker
+echo "The version of Docker installed can be checked"
+docker version
