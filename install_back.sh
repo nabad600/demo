@@ -48,6 +48,6 @@ echo "Docker composer version check"
 docker-compose --version
 sudo touch /etc/sysctl.d/50-unprivileged-ports.conf
 sudo chown $USER:$USER /etc/sysctl.d/50-unprivileged-ports.conf
-sudo echo "net.ipv4.ip_unprivileged_port_start=0" >> /etc/sysctl.d/50-unprivileged-ports.conf
+sudo echo "net.ipv4.ip_unprivileged_port_start=80" >> /etc/sysctl.d/50-unprivileged-ports.conf
 sudo chown root:root /etc/sysctl.d/50-unprivileged-ports.conf
 sudo sysctl --system
