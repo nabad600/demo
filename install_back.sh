@@ -28,3 +28,19 @@ sudo usermod -aG docker $(whoami)
 newgrp docker
 echo "The version of Docker installed can be checked"
 docker version
+echo "Install Docker Compose on Fedora 35/34/33/32/31 from the repo"
+sudo dnf -y install docker-compose
+echo "Install Docker Compose on Fedora from a binary file."
+sudo dnf -y install wget
+echo "Download latest compose:"
+curl -s https://api.github.com/repos/docker/compose/releases/latest \
+  | grep browser_download_url \
+  | grep docker-compose-linux-x86_64 \
+  | cut -d '"' -f 4 \
+  | wget -qi -
+echo "Make the binary file executable."
+chmod +x docker-compose-linux-x86_64
+echo "Move the file to your PATH."
+sudo mv docker-compose-linux-x86_64 /usr/local/bin/docker-compose
+echo "Docker composer version check"
+docker-compose --version
